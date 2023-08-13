@@ -15,3 +15,9 @@ body,
 html {
   @apply min-h-[100vh];
 }
+
+canvas {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}

@@ -31,11 +31,10 @@ export default function Home() {
         far={0.8}
       />
       {/* <Selector> */}
-      <ScrollControls pages={3} damping={0.25}>
+      <ScrollControls pages={3} damping={0.3}>
         <Shoe rotation={[1, 2.3, -0.6]} />
 
         <Scroll html>
-          {/* DOM contents in here will scroll along */}
           <img
             src="./assets/layout-idea.png"
             className="w-full min-h-[100vh]"
