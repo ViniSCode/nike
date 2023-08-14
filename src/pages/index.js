@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <Canvas
       eventPrefix="client"
-      camera={{ position: [0, 0, 4], fov: 35 }}
+      camera={{ position: [0, 0, 4], fov: 20 }}
       style={{ width: "100%", height: "100vh", maxWidth: "1920px" }}
       className="bg-gradient-to-b from-zinc-900 to-black relative"
     >
