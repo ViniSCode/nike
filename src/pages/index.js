@@ -10,8 +10,8 @@ export default function Home() {
     <Canvas
       eventPrefix="client"
       camera={{ position: [0, 0, 4], fov: 35 }}
-      style={{ width: "100%", height: "100vh" }}
-      className="min-w-full min-h-full bg-gradient-to-b from-zinc-900 to-black relative"
+      style={{ width: "100%", height: "100vh", maxWidth: "1920px" }}
+      className="bg-gradient-to-b from-zinc-900 to-black relative"
     >
       <ambientLight intensity={2.7} />
       <spotLight
@@ -32,7 +32,7 @@ export default function Home() {
       />
       {/* <Selector> */}
       <ScrollControls pages={3} damping={0.3}>
-        <Shoe rotation={[1, 2.3, -0.6]} />
+        <Shoe />
 
         <Scroll html>
           <img

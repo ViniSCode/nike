@@ -8,7 +8,7 @@ Title: Nike Air Zoom Pegasus 36
 */
 
 import { useGLTF, useScroll } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import { gsap } from "gsap";
 import { useLayoutEffect, useRef } from "react";
 
@@ -17,14 +17,10 @@ export function Shoe(props) {
   const scroll = useScroll();
   const tl = useRef();
   const { nodes, materials } = useGLTF("./models/nike-air-zoom-pegasus-36.glb");
+  const { viewport } = useThree();
 
   useFrame((state, delta) => {
     const t = state.clock.getElapsedTime();
-    // ref.current.rotation.set(
-    //   Math.cos(t / 4) / 8,
-    //   Math.sin(t / 3) / 4,
-    //   0.15 + Math.sin(t / 2) / 8
-    // );
     tl.current.seek(scroll.offset * tl.current.duration());
   });
 
@@ -34,12 +30,23 @@ export function Shoe(props) {
     });
 
     tl.current
-      .to(ref.current.position, { y: 0 }, 0)
-      .to(ref.current.rotation, { y: 0 }, 0);
+      .to(ref.current.position, { y: 0.3 }, 0.2)
+      .to(ref.current.rotation, { y: 0.5 }, 0.2);
 
     tl.current
-      .to(ref.current.position, { x: 0.7 }, 3)
-      .to(ref.current.rotation, { y: 2.2, x: 0, z: 0.2 }, 3);
+      .to(ref.current.position, { x: viewport.width / 6 }, 2)
+      .to(ref.current.rotation, { y: 2, x: 0, z: 0 }, 2);
+    tl.current
+      .to(ref.current.position, { x: viewport.width / 5 }, 4)
+      .to(ref.current.rotation, { y: 2.2, x: 0, z: 0.2 }, 4);
+
+    tl.current
+      .to(ref.current.position, { x: viewport.width / 6 }, 7.5)
+      .to(ref.current.rotation, { y: 1.5, x: 0.1, z: 0.3 }, 7.5);
+
+    tl.current
+      .to(ref.current.position, { x: viewport.width / 7 }, 10)
+      .to(ref.current.rotation, { y: 0.2, x: 0.2, z: 0.4 }, 10);
 
     tl.current
       .to(ref.current.position, { x: 0 }, 13)
@@ -50,8 +57,10 @@ export function Shoe(props) {
       <mesh
         receiveShadow
         castShadow
+        scale={(viewport.width / 6) * 1.5}
         geometry={nodes.defaultMaterial.geometry}
         material={materials.NikeShoe}
+        rotation={[1, 2.3, -0.6]}
         {...props}
       />
     </group>
