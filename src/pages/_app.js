@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import { helvetica } from "../../public/assets/fonts";
+import { helvetica, helveticaRegular } from "../../public/assets/fonts";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -8,6 +8,7 @@ export default function App({ Component, pageProps }) {
         {`
           :root {
             --helvetica: ${helvetica.style.fontFamily};
+            --helvetica-regular: ${helveticaRegular.style.fontFamily};
           }
         `}
       </style>

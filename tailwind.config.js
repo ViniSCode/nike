@@ -14,6 +14,7 @@ module.exports = {
       },
       fontFamily: {
         helvetica: ["var(--helvetica)"],
+        helveticaRegular: ["var(--helvetica-regular)"],
         Bayon: ["'Bayon'", "sans-serif"],
         Inter: ["'Inter'", "sans-serif"],
       },

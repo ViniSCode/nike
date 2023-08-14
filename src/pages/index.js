@@ -1,16 +1,18 @@
-import { Shoe } from "@/components/Shoe";
+import { Header } from "@/components/Header";
+import { Shoe } from "@/components/Shoe/Shoe";
 import { ContactShadows, Scroll, ScrollControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { useRef } from "react";
 
 export default function Home() {
-  const canvasRef = useRef(null);
-
   return (
     <Canvas
       eventPrefix="client"
       camera={{ position: [0, 0, 4], fov: 20 }}
-      style={{ width: "100%", height: "100vh", maxWidth: "1920px" }}
+      style={{
+        width: "100%",
+        height: "100vh",
+        overflowX: "hidden",
+      }}
       className="bg-gradient-to-b from-zinc-900 to-black relative"
     >
       <ambientLight intensity={2.7} />
@@ -21,7 +23,6 @@ export default function Home() {
         position={[10, 15, -5]}
         castShadow
       />
-
       <ContactShadows
         resolution={512}
         position={[0, -0.8, 0]}
@@ -30,26 +31,17 @@ export default function Home() {
         blur={2}
         far={0.8}
       />
-      {/* <Selector> */}
       <ScrollControls pages={3} damping={0.3}>
         <Shoe />
 
         <Scroll html>
-          <img
-            src="./assets/layout-idea.png"
-            className="w-full min-h-[100vh]"
-          />
-          <img
-            src="./assets/layout-idea-2.png"
-            className="w-full min-h-[100vh]"
-          />
-          <img
-            src="./assets/layout-idea-3.png"
-            className="w-full min-h-[100vh]"
-          />
+          <div className="relative">
+            <Header />
+          </div>
+          <div className="w-full min-h-[100vh]" />
+          <div className="w-full min-h-[100vh]" />
         </Scroll>
       </ScrollControls>
-      {/* </Selector> */}
     </Canvas>
   );
 }

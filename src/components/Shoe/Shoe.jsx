@@ -10,7 +10,7 @@ Title: Nike Air Zoom Pegasus 36
 import { useGLTF, useScroll } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { gsap } from "gsap";
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 
 export function Shoe(props) {
   const ref = useRef();
@@ -30,7 +30,7 @@ export function Shoe(props) {
     });
 
     tl.current
-      .to(ref.current.position, { y: 0.3 }, 0.2)
+      .to(ref.current.position, { y: 0 }, 0.2)
       .to(ref.current.rotation, { y: 0.5 }, 0.2);
 
     tl.current
@@ -52,12 +52,18 @@ export function Shoe(props) {
       .to(ref.current.position, { x: 0 }, 13)
       .to(ref.current.rotation, { y: 0.5, x: 0.5, z: 0.4 }, 13);
   }, []);
+
+  useEffect(() => {
+    if (viewport.width < 2.5) {
+      console.log((viewport.width / 6) * 1.5);
+    }
+  }, [viewport.width]);
   return (
     <group ref={ref}>
       <mesh
         receiveShadow
         castShadow
-        scale={(viewport.width / 6) * 1.5}
+        scale={viewport.width < 2.5 ? (viewport.width / 6) * 1.5 : 0.57}
         geometry={nodes.defaultMaterial.geometry}
         material={materials.NikeShoe}
         rotation={[1, 2.3, -0.6]}
