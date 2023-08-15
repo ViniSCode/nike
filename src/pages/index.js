@@ -57,7 +57,7 @@ export default function Home() {
                 <h1 className="text-7xl tracking-tight">
                   Pegasus 36 Unleash Your Run with
                 </h1>
-                <p class="mt-8 text-neutral-400 text-xl font-medium">
+                <p class="mt-8 text-neutral-400 text-xl max-w-md font-medium">
                   Elevate your stride, conquer every mile with Nike's Pegasus
                   36.
                 </p>
