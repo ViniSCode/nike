@@ -1,7 +1,7 @@
 export function Header() {
   return (
-    <header className="w-[100vw]">
-      <nav className="px-12 py-6 relative">
+    <header className="">
+      <nav className="relative">
         <img
           src="./assets/nike-logo.png"
           alt=""

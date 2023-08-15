@@ -21,4 +21,12 @@ canvas {
   position: relative;
   z-index: 1;
   pointer-events: none;
+  display: block;
+}
+
+.text-stroke {
+  color: black;
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #7c7c7c;
 }
