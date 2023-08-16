@@ -30,6 +30,8 @@ export function Shoe(props) {
       tl.current.kill();
     }
 
+    // console.log(viewport.width);
+
     tl.current = gsap.timeline({
       defaults: { duration: 2, ease: "power1.inOut" },
     });
@@ -41,8 +43,9 @@ export function Shoe(props) {
     tl.current
       .to(ref.current.position, { x: viewport.width / 6 }, 2)
       .to(ref.current.rotation, { y: 2, x: 0, z: 0 }, 2);
+
     tl.current
-      .to(ref.current.position, { x: viewport.width / 4 }, 4)
+      .to(ref.current.position, { x: viewport.width / 3.7 }, 4)
       .to(ref.current.rotation, { y: 2.2, x: 0, z: 0.2 }, 4);
 
     tl.current
