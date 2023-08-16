@@ -10,7 +10,7 @@ Title: Nike Air Zoom Pegasus 36
 import { useGLTF, useScroll } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { gsap } from "gsap";
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 
 export function Shoe(props) {
   const ref = useRef();
@@ -22,22 +22,27 @@ export function Shoe(props) {
   useFrame((state, delta) => {
     const t = state.clock.getElapsedTime();
     tl.current.seek(scroll.offset * tl.current.duration());
-  });
+  }, []);
 
   useLayoutEffect(() => {
+    if (tl.current) {
+      tl.current.progress(0);
+      tl.current.kill();
+    }
+
     tl.current = gsap.timeline({
       defaults: { duration: 2, ease: "power1.inOut" },
     });
 
     tl.current
-      .to(ref.current.position, { y: 0 }, 0.2)
+      .to(ref.current.position, { y: viewport.width / 50 }, 0.2)
       .to(ref.current.rotation, { y: 0.5 }, 0.2);
 
     tl.current
       .to(ref.current.position, { x: viewport.width / 6 }, 2)
       .to(ref.current.rotation, { y: 2, x: 0, z: 0 }, 2);
     tl.current
-      .to(ref.current.position, { x: viewport.width / 5 }, 4)
+      .to(ref.current.position, { x: viewport.width / 4 }, 4)
       .to(ref.current.rotation, { y: 2.2, x: 0, z: 0.2 }, 4);
 
     tl.current
@@ -51,13 +56,8 @@ export function Shoe(props) {
     tl.current
       .to(ref.current.position, { x: 0 }, 13)
       .to(ref.current.rotation, { y: 0.5, x: 0.5, z: 0.4 }, 13);
-  }, []);
+  }, [viewport.width, tl.current]);
 
-  useEffect(() => {
-    if (viewport.width < 2.5) {
-      console.log((viewport.width / 6) * 1.5);
-    }
-  }, [viewport.width]);
   return (
     <group ref={ref}>
       <mesh

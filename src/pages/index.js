@@ -36,7 +36,7 @@ export default function Home() {
 
         <Scroll html>
           <div className="w-[100vw] px-12 py-6">
-            <div className="w-full h-screen relative">
+            <div className="w-full h-screen relative max-w-[1400px] mx-auto">
               <Header />
               <div className="font-Bayon font-bold absolute bottom-20">
                 <h1 className="text-7xl tracking-tight">
@@ -52,7 +52,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="w-full h-screen mt-44">
+            <div className="w-full h-screen mt-44 max-w-[1400px] mx-auto">
               <div className="font-Bayon max-w-xl">
                 <h1 className="text-7xl tracking-tight">
                   Pegasus 36 Unleash Your Run with
